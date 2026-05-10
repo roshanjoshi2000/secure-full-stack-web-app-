@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome {
+            color: white;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .content-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.08);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        input, button {
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="list_of_movie.php">Home</a>
+    <a href="search_movie.php">Search</a>
+    <a href="search_movie_ajax.php">Ajax Search</a>
+
+    {% if logged_in_user %}
+        <a href="add_movie.php">Add Movie</a>
+        <span class="welcome">Welcome, {{ logged_in_user }}</span>
+        <a href="logout.php">Logout</a>
+    {% else %}
+        <a href="login.php">Login</a>
+        <a href="register.php">Register</a>
+    {% endif %}
+</div>
+
+<div class="content-box">
+    <h1>{{ title }}</h1>
