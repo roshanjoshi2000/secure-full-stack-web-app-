@@ -1,0 +1,34 @@
+{% include 'header.twig' %}
+
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+    <th>ID</th>
+    <th>Movie Name</th>
+    <th>Genre</th>
+    <th>Price</th>
+    <th>Date</th>
+    {% if logged_in_user %}
+        <th>Actions</th>
+    {% endif %}
+</tr>
+
+{% for movie in movies %}
+<tr>
+    <td>{{ movie.id }}</td>
+    <td>{{ movie.Movie_name }}</td>
+    <td>{{ movie.Genre }}</td>
+    <td>{{ movie.Price }}</td>
+    <td>{{ movie.Date_of_release }}</td>
+
+    {% if logged_in_user %}
+    <td>
+        <a href="edit_movie.php?id={{ movie.id }}">Edit</a> |
+        <a href="delete_movie.php?id={{ movie.id }}">Delete</a>
+    </td>
+    {% endif %}
+</tr>
+{% endfor %}
+
+</table>
+
+{% include 'footer.twig' %}
