@@ -1,0 +1,51 @@
+{% include 'header.twig' %}
+
+<form method="get" action="">
+    <label>Movie Name:</label>
+    <input type="text" name="movie_name" value="{{ movie_name|e }}">
+
+    <label>Genre:</label>
+    <input type="text" name="genre" value="{{ genre|e }}">
+
+    <label>Min Price:</label>
+    <input type="number" step="0.01" name="min_price" value="{{ min_price|e }}">
+
+    <label>Max Price:</label>
+    <input type="number" step="0.01" name="max_price" value="{{ max_price|e }}">
+
+    <label>Year:</label>
+    <input type="number" name="year" value="{{ year|e }}">
+
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+    <th>ID</th>
+    <th>Movie Name</th>
+    <th>Genre</th>
+    <th>Price</th>
+    <th>Date of Release</th>
+</tr>
+
+{% if movies is not empty %}
+    {% for movie in movies %}
+        <tr>
+            <td>{{ movie.id }}</td>
+            <td>{{ movie.Movie_name }}</td>
+            <td>{{ movie.Genre }}</td>
+            <td>{{ movie.Price }}</td>
+            <td>{{ movie.Date_of_release }}</td>
+        </tr>
+    {% endfor %}
+{% else %}
+    <tr>
+        <td colspan="5">No results found</td>
+    </tr>
+{% endif %}
+
+</table>
+
+{% include 'footer.twig' %}
