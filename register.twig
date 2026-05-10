@@ -1,0 +1,36 @@
+{% include 'header.twig' %}
+
+<h2>Register</h2>
+
+{% if message %}
+    <p style="color: green;">{{ message }}</p>
+{% endif %}
+
+{% if errors is not empty %}
+    <ul style="color: red;">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" action="">
+    <label for="username">Username:</label><br>
+    <input type="text" name="username" id="username" value="{{ username|e }}" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" id="password" required><br><br>
+
+    <label for="confirm_password">Confirm Password:</label><br>
+    <input type="password" name="confirm_password" id="confirm_password" required><br><br>
+
+    <label for="captcha">What is {{ captcha_question }} ?</label><br>
+    <input type="text" name="captcha" id="captcha" required><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<p><a href="login.php">Go to Login</a></p>
+<p><a href="list_of_movie.php">Back to Movie List</a></p>
+
+{% include 'footer.twig' %}
